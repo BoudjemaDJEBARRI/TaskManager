@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    
+    <ion-buttons slot="end">
+      <ion-tab-button tab="message">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        <ion-badge color="primary">8</ion-badge>
+        <ion-label></ion-label>
+      </ion-tab-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-tab-button tab="account">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label></ion-label>
+      </ion-tab-button>
+    </ion-buttons>
+
+    <ion-title>tasklist</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense" color="primary">
+    <ion-toolbar>
+      <ion-title size="large">List of Tasks</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+  
+    <br>  <h1 style="text-align: center; color: var(--ion-color-primary)" >List of Tasks</h1> <br>
+
+    <ion-list lines="full">
+      <ion-item *ngFor="let task of tasks" (click)="markAsCompleted(task)">
+        <ion-icon slot="start" name="checkmark-circle" [color]="task.completed ? 'success' : 'medium'"></ion-icon>
+        <ion-label [class.completed]="task.completed">{{ task.title }}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item lines="none" *ngFor="let task of tasks">
+        <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+        <ion-label>{{ task }}</ion-label>
+      </ion-item>
+    </ion-list>
+
+  </div>
+</ion-content>
